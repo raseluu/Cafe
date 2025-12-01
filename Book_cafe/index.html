@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aesthete Book Café - A cozy space where books meet the soul. Enjoy coffee, read books, and connect with fellow book lovers.">
+<meta name="keywords" content="book cafe, coffee shop, books, reading, community, events, literature">
+<meta name="author" content="Aesthete Book Café">
+<title>Aesthete Book Café - Where Books Meet The Soul</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<script src="assets/js/script.js" defer></script>
+</head>
+<body>
+
+<!-- Header / Navbar -->
+<header>
+  <nav class="navbar container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Aesthete Book Café Logo">
+      <h1>Aesthete Book Café</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="books.html"><i class="fas fa-book"></i> Books</a></li>
+      <li><a href="menu.html"><i class="fas fa-coffee"></i> Menu</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#" class="btn-member" id="loginBtn"><i class="fas fa-user"></i> Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="fade-in">Where Books Meet The Soul</h1>
+    <p class="fade-in-delay">A cozy sanctuary for book lovers and coffee enthusiasts</p>
+    <p class="hero-discount fade-in-delay-2"><strong>Be a member to get 10% discount on all purchases!</strong></p>
+    <div class="hero-buttons fade-in-delay-3">
+      <button class="btn-primary" id="joinMembershipBtn"><i class="fas fa-user-plus"></i> Join Membership</button>
+      <button class="btn-secondary" id="heroLoginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about container section-padding">
+  <h2 class="section-title"><i class="fas fa-info-circle"></i> About Us</h2>
+  <p class="about-text">
+    At <strong>Aesthete Book Café</strong>, we offer more than just coffee and books—we create experiences. 
+    Our cozy space is designed to be a peaceful haven where you can lose yourself in a good book, 
+    savor artisanal coffee, and connect with like-minded souls. We host literary events, 
+    book discussions, poetry nights, and art workshops. Whether you're seeking solitude or community, 
+    you'll find your place here. Welcome to where stories come alive and friendships begin over a cup of coffee.
+  </p>
+</section>
+
+<!-- Member Benefits Section -->
+<section class="benefits-section">
+  <div class="container section-padding">
+    <h2 class="section-title">Why Become a Member?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <i class="fas fa-percent benefit-icon"></i>
+        <h3>10% Discount</h3>
+        <p>Enjoy 10% off on all books, beverages, and food items</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-calendar-check benefit-icon"></i>
+        <h3>Priority Events</h3>
+        <p>Get early access and priority registration for all events</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-gift benefit-icon"></i>
+        <h3>Birthday Special</h3>
+        <p>Receive a free beverage and dessert on your birthday</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-book-reader benefit-icon"></i>
+        <h3>Book Reservations</h3>
+        <p>Reserve new releases and popular titles before others</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Books -->
+<section class="featured-books container section-padding">
+  <h2 class="section-title"><i class="fas fa-star"></i> Featured Books</h2>
+  <div class="books-grid">
+    <div class="card">
+      <div class="card-image">
+        <img src="assets/images/book1.jpg" alt="The Midnight Library by Matt Haig">
+        <span class="badge">Bestseller</span>
+      </div>
+      <h3>The Midnight Library</h3>
+      <p class="author">by Matt Haig</p>
+      <p class="description">Between life and death, there is a library filled with infinite possibilities.</p>
+      <p class="price">$16.99</p>
+    </div>
+    <div class="card">
+      <div class="card-image">
+        <img src="assets/images/book2.jpg" alt="The Alchemist by Paulo Coelho">
+        <span class="badge">Classic</span>
+      </div>
+      <h3>The Alchemist</h3>
+      <p class="author">by Paulo Coelho</p>
+      <p class="description">A magical tale of Santiago, an Andalusian shepherd boy who follows his dreams.</p>
+      <p class="price">$14.99</p>
+    </div>
+    <div class="card">
+      <div class="card-image">
+        <img src="assets/images/book3.jpg" alt="Atomic Habits by James Clear">
+        <span class="badge">New</span>
+      </div>
+      <h3>Atomic Habits</h3>
+      <p class="author">by James Clear</p>
+      <p class="description">Transform your life with tiny changes that lead to remarkable results.</p>
+      <p class="price">$18.99</p>
+    </div>
+  </div>
+  <div class="text-center">
+    <a href="books.html" class="btn-link">View All Books <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container section-padding">
+    <h2 class="section-title"><i class="fas fa-quote-left"></i> What Our Customers Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"This place is my sanctuary! The ambiance is perfect for reading, and the coffee is exceptional. I've made so many friends at their book club events."</p>
+        <div class="testimonial-author">
+          <img src="assets/images/user1.jpg" alt="Sarah Johnson">
+          <div>
+            <h4>Sarah Johnson</h4>
+            <p>Regular Member</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Best book café in town! Great selection of books, delicious pastries, and a warm atmosphere. The poetry nights are absolutely magical."</p>
+        <div class="testimonial-author">
+          <img src="assets/images/user2.jpg" alt="Michael Chen">
+          <div>
+            <h4>Michael Chen</h4>
+            <p>Book Enthusiast</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"I discovered this gem last month and I'm hooked! The staff recommendations are always spot-on, and the member discount is fantastic."</p>
+        <div class="testimonial-author">
+          <img src="assets/images/user3.jpg" alt="Emily Davis">
+          <div>
+            <h4>Emily Davis</h4>
+            <p>Coffee Lover</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Login/Register Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content modal-large">
+    <span class="close-modal">&times;</span>
+    
+    <!-- Modal Tabs -->
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <button class="modal-tab" data-tab="register">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginTab" class="modal-tab-content active">
+      <h2 class="modal-title"><i class="fas fa-sign-in-alt"></i> Welcome Back!</h2>
+      <p class="modal-subtitle">Sign in to your account</p>
+      <form id="loginForm" class="modal-form">
+        <div class="form-group">
+          <label for="loginEmail"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required>
+          <span class="error-message" id="loginEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+          <span class="error-message" id="loginPasswordError"></span>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <div class="auth-links">
+          <a href="#"><i class="fas fa-key"></i> Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerTab" class="modal-tab-content">
+      <h2 class="modal-title"><i class="fas fa-user-plus"></i> Join Us Today!</h2>
+      <p class="modal-subtitle">Create your account and start enjoying benefits</p>
+      <form id="registerForm" class="modal-form">
+        <div class="form-group">
+          <label for="regName"><i class="fas fa-user"></i> Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your full name" required>
+          <span class="error-message" id="regNameError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regEmail"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="regEmail" placeholder="Enter your email" required>
+          <span class="error-message" id="regEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPhone"><i class="fas fa-phone"></i> Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="Enter your phone" required>
+          <span class="error-message" id="regPhoneError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPassword"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="regPassword" placeholder="Create a password (min 8 characters)" required>
+          <span class="error-message" id="regPasswordError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regConfirmPassword"><i class="fas fa-lock"></i> Confirm Password</label>
+          <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+          <span class="error-message" id="regConfirmPasswordError"></span>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Register & Get 10% Off</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h3><i class="fas fa-book-open"></i> Aesthete Book Café</h3>
+      <p>Where Books Meet The Soul</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Book Street, Literature City</p>
+      <p><i class="fas fa-phone"></i> +123 456 7890</p>
+      <p><i class="fas fa-envelope"></i> info@aesthetebookcafe.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Opening Hours</h4>
+      <p>Monday - Friday: 8:00 AM - 9:00 PM</p>
+      <p>Saturday - Sunday: 9:00 AM - 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Aesthete Book Café | Designed with <i class="fas fa-heart"></i> for book lovers</p>
+  </div>
+</footer>
+
+</body>
+</html>

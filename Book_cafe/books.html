@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Browse our curated collection of books - fiction, non-fiction, poetry, and more at Aesthete Book Café.">
+<meta name="keywords" content="books, fiction, non-fiction, poetry, bestsellers, book collection">
+<title>Books Collection | Aesthete Book Café</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<script src="assets/js/script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Aesthete Book Café Logo">
+      <h1>Aesthete Book Café</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="books.html" class="active"><i class="fas fa-book"></i> Books</a></li>
+      <li><a href="menu.html"><i class="fas fa-coffee"></i> Menu</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#" class="btn-member" id="loginBtn"><i class="fas fa-user"></i> Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Our Collection of Books</h1>
+    <p>Discover inspiring stories, timeless classics, and literary gems</p>
+  </div>
+</section>
+
+<!-- Filter Section -->
+<section class="filter-section container">
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> All Books</button>
+    <button class="filter-btn" data-filter="fiction"><i class="fas fa-book-open"></i> Fiction</button>
+    <button class="filter-btn" data-filter="non-fiction"><i class="fas fa-graduation-cap"></i> Non-Fiction</button>
+    <button class="filter-btn" data-filter="poetry"><i class="fas fa-feather"></i> Poetry</button>
+    <button class="filter-btn" data-filter="bestseller"><i class="fas fa-star"></i> Bestsellers</button>
+  </div>
+</section>
+
+<section class="books container section-padding">
+  <div class="books-grid">
+    
+    <!-- Book 1 -->
+    <div class="card" data-category="fiction bestseller">
+      <div class="card-image">
+        <img src="assets/images/book1.jpg" alt="The Midnight Library">
+        <span class="badge">Bestseller</span>
+      </div>
+      <h3>The Midnight Library</h3>
+      <p class="author">by Matt Haig</p>
+      <p class="description">Between life and death, there is a library filled with infinite possibilities to explore what could have been.</p>
+      <p class="price">$16.99</p>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="card" data-category="fiction">
+      <div class="card-image">
+        <img src="assets/images/book2.jpg" alt="The Alchemist">
+        <span class="badge">Classic</span>
+      </div>
+      <h3>The Alchemist</h3>
+      <p class="author">by Paulo Coelho</p>
+      <p class="description">A magical tale of Santiago, an Andalusian shepherd boy who yearns to travel in search of treasure.</p>
+      <p class="price">$14.99</p>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="card" data-category="non-fiction bestseller">
+      <div class="card-image">
+        <img src="assets/images/book3.jpg" alt="Atomic Habits">
+        <span class="badge">New</span>
+      </div>
+      <h3>Atomic Habits</h3>
+      <p class="author">by James Clear</p>
+      <p class="description">Transform your life with tiny changes that deliver remarkable results through the power of habits.</p>
+      <p class="price">$18.99</p>
+    </div>
+
+    <!-- Book 4 -->
+    <div class="card" data-category="fiction">
+      <div class="card-image">
+        <img src="assets/images/book4.jpg" alt="The Seven Husbands of Evelyn Hugo">
+        <span class="badge">Popular</span>
+      </div>
+      <h3>The Seven Husbands of Evelyn Hugo</h3>
+      <p class="author">by Taylor Jenkins Reid</p>
+      <p class="description">A reclusive Hollywood icon reveals her scandalous life story to an unknown magazine reporter.</p>
+      <p class="price">$17.99</p>
+    </div>
+
+    <!-- Book 5 -->
+    <div class="card" data-category="non-fiction">
+      <div class="card-image">
+        <img src="assets/images/book5.jpg" alt="Sapiens">
+      </div>
+      <h3>Sapiens</h3>
+      <p class="author">by Yuval Noah Harari</p>
+      <p class="description">A brief history of humankind, from the Stone Age to the modern age of technology and beyond.</p>
+      <p class="price">$19.99</p>
+    </div>
+
+    <!-- Book 6 -->
+    <div class="card" data-category="poetry bestseller">
+      <div class="card-image">
+        <img src="assets/images/book6.jpg" alt="Milk and Honey">
+        <span class="badge">Bestseller</span>
+      </div>
+      <h3>Milk and Honey</h3>
+      <p class="author">by Rupi Kaur</p>
+      <p class="description">A collection of poetry and prose about survival, femininity, love, and heartache.</p>
+      <p class="price">$13.99</p>
+    </div>
+
+    <!-- Book 7 -->
+    <div class="card" data-category="fiction bestseller">
+      <div class="card-image">
+        <img src="assets/images/book7.jpg" alt="Where the Crawdads Sing">
+        <span class="badge">Bestseller</span>
+      </div>
+      <h3>Where the Crawdads Sing</h3>
+      <p class="author">by Delia Owens</p>
+      <p class="description">A coming-of-age murder mystery set in the marshlands of North Carolina in the 1950s and 60s.</p>
+      <p class="price">$16.99</p>
+    </div>
+
+    <!-- Book 8 -->
+    <div class="card" data-category="non-fiction">
+      <div class="card-image">
+        <img src="assets/images/book8.jpg" alt="Educated">
+      </div>
+      <h3>Educated</h3>
+      <p class="author">by Tara Westover</p>
+      <p class="description">A memoir about a young woman who leaves her survivalist family and goes on to earn a PhD from Cambridge.</p>
+      <p class="price">$17.99</p>
+    </div>
+
+    <!-- Book 9 -->
+    <div class="card" data-category="fiction">
+      <div class="card-image">
+        <img src="assets/images/book9.jpg" alt="The Silent Patient">
+        <span class="badge">Thriller</span>
+      </div>
+      <h3>The Silent Patient</h3>
+      <p class="author">by Alex Michaelides</p>
+      <p class="description">A woman's act of violence against her husband and the therapist obsessed with uncovering her motive.</p>
+      <p class="price">$15.99</p>
+    </div>
+
+    <!-- Book 10 -->
+    <div class="card" data-category="poetry">
+      <div class="card-image">
+        <img src="assets/images/book10.jpg" alt="The Sun and Her Flowers">
+      </div>
+      <h3>The Sun and Her Flowers</h3>
+      <p class="author">by Rupi Kaur</p>
+      <p class="description">A poetry collection divided into five chapters exploring growth, healing, ancestry, and honoring one's roots.</p>
+      <p class="price">$14.99</p>
+    </div>
+
+    <!-- Book 11 -->
+    <div class="card" data-category="non-fiction bestseller">
+      <div class="card-image">
+        <img src="assets/images/book11.jpg" alt="Thinking, Fast and Slow">
+      </div>
+      <h3>Thinking, Fast and Slow</h3>
+      <p class="author">by Daniel Kahneman</p>
+      <p class="description">Explores the two systems that drive the way we think and reveals how we can harness them better.</p>
+      <p class="price">$18.99</p>
+    </div>
+
+    <!-- Book 12 -->
+    <div class="card" data-category="fiction">
+      <div class="card-image">
+        <img src="assets/images/book12.jpg" alt="The Book Thief">
+        <span class="badge">Classic</span>
+      </div>
+      <h3>The Book Thief</h3>
+      <p class="author">by Markus Zusak</p>
+      <p class="description">Set in Nazi Germany, a young girl finds solace by stealing books and sharing them with others.</p>
+      <p class="price">$15.99</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Login/Register Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content modal-large">
+    <span class="close-modal">&times;</span>
+    
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <button class="modal-tab" data-tab="register">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </div>
+
+    <div id="loginTab" class="modal-tab-content active">
+      <h2 class="modal-title"><i class="fas fa-sign-in-alt"></i> Welcome Back!</h2>
+      <p class="modal-subtitle">Sign in to your account</p>
+      <form id="loginForm" class="modal-form">
+        <div class="form-group">
+          <label for="loginEmail"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required>
+          <span class="error-message" id="loginEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+          <span class="error-message" id="loginPasswordError"></span>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <div class="auth-links">
+          <a href="#"><i class="fas fa-key"></i> Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+
+    <div id="registerTab" class="modal-tab-content">
+      <h2 class="modal-title"><i class="fas fa-user-plus"></i> Join Us Today!</h2>
+      <p class="modal-subtitle">Create your account and start enjoying benefits</p>
+      <form id="registerForm" class="modal-form">
+        <div class="form-group">
+          <label for="regName"><i class="fas fa-user"></i> Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your full name" required>
+          <span class="error-message" id="regNameError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regEmail"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="regEmail" placeholder="Enter your email" required>
+          <span class="error-message" id="regEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPhone"><i class="fas fa-phone"></i> Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="Enter your phone" required>
+          <span class="error-message" id="regPhoneError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPassword"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="regPassword" placeholder="Create a password (min 8 characters)" required>
+          <span class="error-message" id="regPasswordError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regConfirmPassword"><i class="fas fa-lock"></i> Confirm Password</label>
+          <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+          <span class="error-message" id="regConfirmPasswordError"></span>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Register & Get 10% Off</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<footer>
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h3><i class="fas fa-book-open"></i> Aesthete Book Café</h3>
+      <p>Where Books Meet The Soul</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Book Street, Literature City</p>
+      <p><i class="fas fa-phone"></i> +123 456 7890</p>
+      <p><i class="fas fa-envelope"></i> info@aesthetebookcafe.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Opening Hours</h4>
+      <p>Monday - Friday: 8:00 AM - 9:00 PM</p>
+      <p>Saturday - Sunday: 9:00 AM - 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Aesthete Book Café | Designed with <i class="fas fa-heart"></i> for book lovers</p>
+  </div>
+</footer>
+
+</body>
+</html>

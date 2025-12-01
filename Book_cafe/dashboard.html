@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="User Dashboard - Aesthete Book Café">
+<title>My Dashboard | Aesthete Book Café</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<script src="assets/js/dashboard.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Aesthete Book Café Logo">
+      <h1>Aesthete Book Café</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="books.html"><i class="fas fa-book"></i> Books</a></li>
+      <li><a href="menu.html"><i class="fas fa-coffee"></i> Menu</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="dashboard.html" class="btn-member active"><i class="fas fa-user"></i> <span id="userName">Dashboard</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero dashboard-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome Back, <span id="userNameHero"></span>!</h1>
+    <p>Manage your profile, view registrations, and enjoy exclusive benefits</p>
+  </div>
+</section>
+
+<!-- Dashboard Content -->
+<section class="dashboard-content container section-padding">
+  
+  <!-- Dashboard Tabs -->
+  <div class="dashboard-tabs">
+    <button class="dashboard-tab active" data-tab="overview">
+      <i class="fas fa-th-large"></i> Overview
+    </button>
+    <button class="dashboard-tab" data-tab="profile">
+      <i class="fas fa-user-circle"></i> Profile
+    </button>
+    <button class="dashboard-tab" data-tab="events">
+      <i class="fas fa-calendar-check"></i> My Events
+    </button>
+    <button class="dashboard-tab" data-tab="settings">
+      <i class="fas fa-cog"></i> Settings
+    </button>
+    <button class="dashboard-tab" id="logoutBtn">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </div>
+
+  <!-- Overview Tab -->
+  <div id="overviewTab" class="dashboard-tab-content active">
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> Account Overview</h2>
+    
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="stat-info">
+          <h3 id="totalEvents">0</h3>
+          <p>Events Registered</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-percent"></i>
+        </div>
+        <div class="stat-info">
+          <h3>10%</h3>
+          <p>Member Discount</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Active</h3>
+          <p>Membership Status</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="stat-info">
+          <h3 id="memberSince">-</h3>
+          <p>Member Since</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member Benefits -->
+    <div class="member-benefits-dashboard">
+      <h3><i class="fas fa-gift"></i> Your Member Benefits</h3>
+      <div class="benefits-list">
+        <div class="benefit-item-dash">
+          <i class="fas fa-check-circle"></i>
+          <span>10% discount on all purchases</span>
+        </div>
+        <div class="benefit-item-dash">
+          <i class="fas fa-check-circle"></i>
+          <span>Priority event registration</span>
+        </div>
+        <div class="benefit-item-dash">
+          <i class="fas fa-check-circle"></i>
+          <span>Free birthday beverage & dessert</span>
+        </div>
+        <div class="benefit-item-dash">
+          <i class="fas fa-check-circle"></i>
+          <span>Book reservation privileges</span>
+        </div>
+        <div class="benefit-item-dash">
+          <i class="fas fa-check-circle"></i>
+          <span>Monthly newsletter</span>
+        </div>
+        <div class="benefit-item-dash">
+          <i class="fas fa-check-circle"></i>
+          <span>Exclusive community access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Tab -->
+  <div id="profileTab" class="dashboard-tab-content">
+    <h2 class="section-title"><i class="fas fa-user-circle"></i> My Profile</h2>
+    
+    <div class="profile-card">
+      <div class="profile-info">
+        <div class="profile-avatar">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="profile-details">
+          <h3 id="profileName">Loading...</h3>
+          <p id="profileEmail">email@example.com</p>
+          <span class="member-badge"><i class="fas fa-crown"></i> Premium Member</span>
+        </div>
+      </div>
+      
+      <form id="updateProfileForm" class="dashboard-form">
+        <div class="form-group">
+          <label for="updateName"><i class="fas fa-user"></i> Full Name</label>
+          <input type="text" id="updateName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="updateEmail"><i class="fas fa-envelope"></i> Email Address</label>
+          <input type="email" id="updateEmail" disabled>
+          <small>Email cannot be changed</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="updatePhone"><i class="fas fa-phone"></i> Phone Number</label>
+          <input type="tel" id="updatePhone" required>
+        </div>
+        
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-save"></i> Update Profile
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Events Tab -->
+  <div id="eventsTab" class="dashboard-tab-content">
+    <h2 class="section-title"><i class="fas fa-calendar-check"></i> My Event Registrations</h2>
+    
+    <div id="myEventsContainer">
+      <div class="loading">Loading your events...</div>
+    </div>
+  </div>
+
+  <!-- Settings Tab -->
+  <div id="settingsTab" class="dashboard-tab-content">
+    <h2 class="section-title"><i class="fas fa-cog"></i> Account Settings</h2>
+    
+    <div class="settings-card">
+      <h3><i class="fas fa-lock"></i> Change Password</h3>
+      <form id="changePasswordForm" class="dashboard-form">
+        <div class="form-group">
+          <label for="currentPassword"><i class="fas fa-key"></i> Current Password</label>
+          <input type="password" id="currentPassword" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="newPassword"><i class="fas fa-lock"></i> New Password</label>
+          <input type="password" id="newPassword" minlength="8" required>
+          <small>Minimum 8 characters</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmNewPassword"><i class="fas fa-lock"></i> Confirm New Password</label>
+          <input type="password" id="confirmNewPassword" required>
+        </div>
+        
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-check-circle"></i> Change Password
+        </button>
+      </form>
+    </div>
+
+    <div class="settings-card danger-zone">
+      <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+      <p>Once you delete your account, there is no going back. Please be certain.</p>
+      <button class="btn-danger" id="deleteAccountBtn">
+        <i class="fas fa-trash-alt"></i> Delete Account
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<footer>
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h3><i class="fas fa-book-open"></i> Aesthete Book Café</h3>
+      <p>Where Books Meet The Soul</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Book Street, Literature City</p>
+      <p><i class="fas fa-phone"></i> +123 456 7890</p>
+      <p><i class="fas fa-envelope"></i> info@aesthetebookcafe.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Opening Hours</h4>
+      <p>Monday - Friday: 8:00 AM - 9:00 PM</p>
+      <p>Saturday - Sunday: 9:00 AM - 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Aesthete Book Café | Designed with <i class="fas fa-heart"></i> for book lovers</p>
+  </div>
+</footer>
+
+</body>
+</html>

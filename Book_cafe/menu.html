@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore our delicious menu of coffee, drinks, desserts, and food at Aesthete Book Café.">
+<meta name="keywords" content="cafe menu, coffee, drinks, desserts, food, beverages">
+<title>Menu | Aesthete Book Café</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<script src="assets/js/script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Aesthete Book Café Logo">
+      <h1>Aesthete Book Café</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="books.html"><i class="fas fa-book"></i> Books</a></li>
+      <li><a href="menu.html" class="active"><i class="fas fa-coffee"></i> Menu</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#" class="btn-member" id="loginBtn"><i class="fas fa-user"></i> Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Our Delicious Menu</h1>
+    <p>Explore our selection of artisanal coffee, refreshing drinks, and delightful treats</p>
+  </div>
+</section>
+
+<section class="menu container section-padding">
+  
+  <!-- Coffee Section -->
+  <h2 class="section-title"><i class="fas fa-mug-hot"></i> Coffee Specialties</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/coffee1.jpg" alt="Cappuccino">
+        <span class="menu-badge">Popular</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Cappuccino</h3>
+          <span class="menu-price">$4.50</span>
+        </div>
+        <p>Creamy espresso with perfectly frothed milk and a dusting of cocoa powder</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/coffee2.jpg" alt="Latte">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Caffe Latte</h3>
+          <span class="menu-price">$4.75</span>
+        </div>
+        <p>Smooth and milky espresso with a touch of vanilla and latte art</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/coffee3.jpg" alt="Espresso">
+        <span class="menu-badge">Strong</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Espresso</h3>
+          <span class="menu-price">$3.00</span>
+        </div>
+        <p>Rich, bold shot of pure Italian-style espresso for true coffee lovers</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/coffee4.jpg" alt="Mocha">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Mocha</h3>
+          <span class="menu-price">$5.25</span>
+        </div>
+        <p>Indulgent blend of espresso, steamed milk, and premium chocolate</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drinks Section -->
+  <h2 class="section-title"><i class="fas fa-glass-whiskey"></i> Refreshing Drinks</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/drink1.jpg" alt="Fresh Lemonade">
+        <span class="menu-badge">Refreshing</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Fresh Lemonade</h3>
+          <span class="menu-price">$3.50</span>
+        </div>
+        <p>Freshly squeezed lemon juice with a hint of mint and honey</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/drink2.jpg" alt="Herbal Tea">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Herbal Tea</h3>
+          <span class="menu-price">$3.75</span>
+        </div>
+        <p>Relaxing blend of chamomile, lavender, and natural herbs</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/drink3.jpg" alt="Iced Matcha Latte">
+        <span class="menu-badge">New</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Iced Matcha Latte</h3>
+          <span class="menu-price">$5.00</span>
+        </div>
+        <p>Premium Japanese matcha with oat milk served over ice</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/drink4.jpg" alt="Hot Chocolate">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Hot Chocolate</h3>
+          <span class="menu-price">$4.25</span>
+        </div>
+        <p>Rich, creamy hot chocolate topped with whipped cream and marshmallows</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desserts Section -->
+  <h2 class="section-title"><i class="fas fa-birthday-cake"></i> Sweet Treats</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/dessert1.jpg" alt="Chocolate Cake">
+        <span class="menu-badge">Bestseller</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Chocolate Fudge Cake</h3>
+          <span class="menu-price">$6.50</span>
+        </div>
+        <p>Rich, moist chocolate cake with layers of velvety chocolate ganache</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/dessert2.jpg" alt="Croissant">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Butter Croissant</h3>
+          <span class="menu-price">$3.50</span>
+        </div>
+        <p>Flaky, buttery French pastry baked fresh daily</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/dessert3.jpg" alt="Blueberry Muffin">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Blueberry Muffin</h3>
+          <span class="menu-price">$4.00</span>
+        </div>
+        <p>Moist muffin bursting with fresh blueberries and a crumbly top</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/dessert4.jpg" alt="Cheesecake">
+        <span class="menu-badge">Chef's Special</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>New York Cheesecake</h3>
+          <span class="menu-price">$6.75</span>
+        </div>
+        <p>Creamy cheesecake with a graham cracker crust and berry compote</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food Section -->
+  <h2 class="section-title"><i class="fas fa-utensils"></i> Light Bites</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/food1.jpg" alt="Avocado Toast">
+        <span class="menu-badge">Healthy</span>
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Avocado Toast</h3>
+          <span class="menu-price">$7.50</span>
+        </div>
+        <p>Smashed avocado on sourdough with cherry tomatoes and poached egg</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/food2.jpg" alt="Club Sandwich">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Club Sandwich</h3>
+          <span class="menu-price">$8.50</span>
+        </div>
+        <p>Triple-decker sandwich with turkey, bacon, lettuce, and tomato</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/food3.jpg" alt="Caesar Salad">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Caesar Salad</h3>
+          <span class="menu-price">$7.00</span>
+        </div>
+        <p>Crisp romaine lettuce with parmesan, croutons, and Caesar dressing</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-image">
+        <img src="assets/images/food4.jpg" alt="Soup of the Day">
+      </div>
+      <div class="menu-details">
+        <div class="menu-header">
+          <h3>Soup of the Day</h3>
+          <span class="menu-price">$5.50</span>
+        </div>
+        <p>Ask our staff about today's homemade soup selection</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Member Discount Banner -->
+<section class="discount-banner">
+  <div class="container">
+    <h2><i class="fas fa-gift"></i> Members get 10% off on all items!</h2>
+    <p>Join our membership to enjoy exclusive discounts and benefits</p>
+    <a href="#" class="btn-primary" id="joinMembershipBtn">Become a Member</a>
+  </div>
+</section>
+
+<!-- Login/Register Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content modal-large">
+    <span class="close-modal">&times;</span>
+    
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <button class="modal-tab" data-tab="register">
+        <i class="fas fa-user-plus"></i> Register
+      </button>
+    </div>
+
+    <div id="loginTab" class="modal-tab-content active">
+      <h2 class="modal-title"><i class="fas fa-sign-in-alt"></i> Welcome Back!</h2>
+      <p class="modal-subtitle">Sign in to your account</p>
+      <form id="loginForm" class="modal-form">
+        <div class="form-group">
+          <label for="loginEmail"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required>
+          <span class="error-message" id="loginEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+          <span class="error-message" id="loginPasswordError"></span>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <div class="auth-links">
+          <a href="#"><i class="fas fa-key"></i> Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+
+    <div id="registerTab" class="modal-tab-content">
+      <h2 class="modal-title"><i class="fas fa-user-plus"></i> Join Us Today!</h2>
+      <p class="modal-subtitle">Create your account and start enjoying benefits</p>
+      <form id="registerForm" class="modal-form">
+        <div class="form-group">
+          <label for="regName"><i class="fas fa-user"></i> Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your full name" required>
+          <span class="error-message" id="regNameError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regEmail"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="regEmail" placeholder="Enter your email" required>
+          <span class="error-message" id="regEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPhone"><i class="fas fa-phone"></i> Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="Enter your phone" required>
+          <span class="error-message" id="regPhoneError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPassword"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="regPassword" placeholder="Create a password (min 8 characters)" required>
+          <span class="error-message" id="regPasswordError"></span>
+        </div>
+        <div class="form-group">
+          <label for="regConfirmPassword"><i class="fas fa-lock"></i> Confirm Password</label>
+          <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+          <span class="error-message" id="regConfirmPasswordError"></span>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fas fa-user-plus"></i> Register & Get 10% Off</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<footer>
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h3><i class="fas fa-book-open"></i> Aesthete Book Café</h3>
+      <p>Where Books Meet The Soul</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Book Street, Literature City</p>
+      <p><i class="fas fa-phone"></i> +123 456 7890</p>
+      <p><i class="fas fa-envelope"></i> info@aesthetebookcafe.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Opening Hours</h4>
+      <p>Monday - Friday: 8:00 AM - 9:00 PM</p>
+      <p>Saturday - Sunday: 9:00 AM - 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Aesthete Book Café | Designed with <i class="fas fa-heart"></i> for book lovers</p>
+  </div>
+</footer>
+
+</body>
+</html>
