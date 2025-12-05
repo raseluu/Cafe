@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthete Book Cafe - Where Books Meet The Soul</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles for homepage */
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            margin-bottom: 40px;
+            font-family: var(--font-heading);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--color-primary);
+            margin: 15px auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .bg-light {
+            background: var(--color-light);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--color-dark);
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial {
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--color-secondary);
+        }
+        
+        /* Hero section enhancement */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Aesthete Book Cafe</h2>
+            <p>Where Books Meet The Soul. Discover your next favorite read while enjoying artisanal coffee in a cozy atmosphere.</p>
+            <div class="hero-buttons">
+                <a href="#featured-books" class="btn btn-primary">Explore Books</a>
+                <a href="events.html" class="btn btn-outline">View Events</a>
+                <a href="menu.html" class="btn btn-outline">Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Books -->
+    <section id="featured-books" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Books</h2>
+            <div class="books-grid" id="books-container">
+                <!-- Books will be loaded by JavaScript -->
+            </div>
+            <div class="text-center">
+                <a href="books.html" class="btn btn-outline">View All Books</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div id="events-container" class="events-list">
+                <!-- Events will be loaded by JavaScript -->
+            </div>
+            <div class="text-center">
+                <a href="events.html" class="btn btn-primary">See All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Curated Collection</h3>
+                    <p>Carefully selected books from literary fiction to philosophy, chosen to inspire and provoke thought.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Artisanal Coffee</h3>
+                    <p>Specialty coffee brewed by expert baristas using ethically sourced beans from around the world.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Events</h3>
+                    <p>Join our book clubs, author meetups, and literary gatherings for book lovers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Cozy Atmosphere</h3>
+                    <p>Comfortable seating, warm lighting, and a peaceful environment perfect for reading.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- About Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>Aesthete Book Cafe is more than just a bookstore or a coffee shop. It's a sanctuary for book lovers, a community hub for creatives, and a peaceful retreat from the hustle and bustle of daily life.</p>
+                    <p>Founded in 2020, we believe in the power of books to transform lives and create connections. Our mission is to provide a space where literature and community come together.</p>
+                    <p>We carefully curate our book selection, focusing on literary fiction, poetry, philosophy, and art books that inspire and provoke thought. Each book on our shelves is chosen with care and intention.</p>
+                    <a href="contact.html" class="btn btn-primary">Visit Us Today</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Book Cafe Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What Our Readers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The perfect place to unwind with a book and a cup of coffee. The atmosphere is so peaceful and the book selection is incredible!"</p>
+                    <p class="testimonial-author">- Sarah M.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Ready to Explore?</h2>
+                <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
+                    Join our community of book lovers today. Sign up for free to get updates on new arrivals, events, and exclusive offers.
+                </p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary">Create Account</a>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+<!-- ... existing HTML code ... -->
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/events.js"></script>
+    <script>
+        // Load header and footer components
+        async function loadComponent(elementId, filePath) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error('Failed to load component');
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+                
+                // Execute any scripts in the component
+                const scripts = document.getElementById(elementId).querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript).remove();
+                });
+                
+                // Update navigation
+                const currentPage = window.location.pathname.split('/').pop();
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    const linkPage = link.getAttribute('href');
+                    if (linkPage === currentPage || 
+                        (currentPage === '' && linkPage === 'index.html') ||
+                        (currentPage === 'index.html' && linkPage === 'index.html')) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Update auth buttons
+                updateNavigation();
+            } catch (error) {
+                console.error('Error loading component:', error);
+                document.getElementById(elementId).innerHTML = 
+                    `<div style="text-align: center; padding: 20px; color: #666;">
+                        Error loading component. Please refresh the page.
+                    </div>`;
+            }
+        }
+
+        // Load components when page loads
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load header and footer
+            await loadComponent('header-container', 'components/header.html');
+            await loadComponent('footer-container', 'components/footer.html');
+            
+            // Load featured books and events
+            await loadFeaturedBooks();
+            await loadUpcomingEvents();
+        });
+
+        // Function to load featured books
+async function loadFeaturedBooks() {
+    try {
+        const response = await fetch('api/books/get-books.php?limit=3');
+        const data = await response.json();
+        
+        if (data.success && data.books.length > 0) {
+            const container = document.getElementById('books-container');
+            
+            // Take only the latest 3 books
+            const latestBooks = data.books.slice(0, 3);
+            
+            container.innerHTML = latestBooks.map(book => `
+                <div class="book-card">
+                    <div class="book-image-container">
+                        <img src="${book.image_url || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'}" 
+                             alt="${book.title}" 
+                             class="book-image"
+                             onerror="this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        ${book.is_featured ? '<span class="featured-badge">Featured</span>' : ''}
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">by ${book.author}</p>
+                        <p class="book-description">${book.description ? (book.description.length > 100 ? book.description.substring(0, 100) + '...' : book.description) : 'No description available.'}</p>
+                        <div class="book-footer">
+                            <span class="book-price">$${parseFloat(book.price).toFixed(2)}</span>
+                            <a href="books.html#book-${book.id}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            document.getElementById('books-container').innerHTML = `
+                <div class="no-books" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                    <i class="fas fa-book" style="font-size: 48px; color: #E8E2DB;"></i>
+                    <h3>No Books Available</h3>
+                    <p>Check back soon for new arrivals!</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Error loading books:', error);
+        document.getElementById('books-container').innerHTML = `
+            <div class="no-books" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #f44336;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Error Loading Books</h3>
+                <p>Please check your database connection.</p>
+            </div>
+        `;
+    }
+}
+
+
+        // Function to load upcoming events
+        async function loadUpcomingEvents() {
+            try {
+                const response = await fetch('api/events/get-events.php?upcoming=true&limit=3');
+                const data = await response.json();
+                
+                if (data.success && data.events.length > 0) {
+                    const container = document.getElementById('events-container');
+                    container.innerHTML = data.events.map(event => {
+                        const eventDate = new Date(event.event_date + 'T' + event.event_time);
+                        const formattedDate = eventDate.toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+                        const formattedTime = eventDate.toLocaleTimeString('en-US', {
+                            hour: 'numeric',
+                            minute: '2-digit'
+                        });
+                        
+                        return `
+                            <div class="event-card">
+                                <div class="event-header">
+                                    <h3 class="event-title">${event.title}</h3>
+                                    <span class="event-date">
+                                        <i class="far fa-calendar"></i> ${formattedDate}
+                                    </span>
+                                </div>
+                                <div class="event-body">
+                                    <div class="event-image">
+                                        <img src="${event.image_url || 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'}" 
+                                             alt="${event.title}"
+                                             onerror="this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+                                    </div>
+                                    <div class="event-details">
+                                        <p class="event-description">
+                                            ${event.description ? (event.description.length > 150 ? event.description.substring(0, 150) + '...' : event.description) : 'No description available.'}
+                                        </p>
+                                        <div class="event-meta">
+                                            <div class="meta-item">
+                                                <i class="far fa-clock"></i>
+                                                <span>${formattedTime}</span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>${event.venue || 'Aesthete Book Cafe'}</span>
+                                            </div>
+                                            ${event.price > 0 ? `
+                                                <div class="meta-item">
+                                                    <i class="fas fa-tag"></i>
+                                                    <span>$${parseFloat(event.price).toFixed(2)}</span>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                        <div class="event-actions">
+                                            <a href="events.html" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    document.getElementById('events-container').innerHTML = `
+                        <div class="no-events" style="text-align: center; padding: 40px;">
+                            <i class="fas fa-calendar" style="font-size: 48px; color: #E8E2DB;"></i>
+                            <h3>No Upcoming Events</h3>
+                            <p>Check back soon for scheduled events!</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading events:', error);
+                document.getElementById('events-container').innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #f44336;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Events</h3>
+                        <p>Please check your database connection.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // View book details function
+        function viewBookDetails(bookId) {
+            alert('Book details for ID: ' + bookId + '\nThis would open a modal in the full implementation.');
+            // In full implementation, this would open a modal with book details
+        }
+    </script>
+</body>
+</html>

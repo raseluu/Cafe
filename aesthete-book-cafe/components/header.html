@@ -1,0 +1,79 @@
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: inherit;">
+                <div class="logo-icon">
+                    <i class="fas fa-book" style="font-size: 32px; color: var(--color-primary);"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 style="margin: 0; color: var(--color-primary);">Aesthete Book Cafe</h1>
+                    <p class="tagline" style="margin: 0; color: var(--color-secondary);">Where Books Meet The Soul</p>
+                </div>
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="auth-buttons" id="authButtons">
+            <!-- Will be populated by JavaScript -->
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Update auth buttons based on login status
+    function updateAuthButtons() {
+        const authButtons = document.getElementById('auth-buttons');
+        if (!authButtons) return;
+        
+        const token = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+        const isAdmin = localStorage.getItem('isAdmin') === 'true';
+        
+        if (token && username) {
+            authButtons.innerHTML = `
+                <span style="margin-right: 10px; color: #4B3A33;">Welcome, ${username}</span>
+                ${isAdmin ? 
+                    '<a href="admin/index.html" class="btn btn-outline">Admin Panel</a>' : 
+                    '<a href="dashboard.html" class="btn btn-outline">Dashboard</a>'
+                }
+                <button onclick="logout()" class="btn btn-primary">Logout</button>
+            `;
+        } else {
+            authButtons.innerHTML = `
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            `;
+        }
+    }
+    
+    // Call when component loads
+    updateAuthButtons();
+    
+    // Logout function
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
+        localStorage.removeItem('isAdmin');
+        
+        // Redirect to home page
+        window.location.href = 'index.html';
+    }
+</script>
+
+
+
+
+

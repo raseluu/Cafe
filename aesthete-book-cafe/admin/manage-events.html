@@ -1,0 +1,311 @@
+<div class="card-header">
+    <h3>Events Management</h3>
+    <div>
+        <button class="btn btn-outline" onclick="exportEvents()">
+            <i class="fas fa-download"></i> Export
+        </button>
+        <button class="btn btn-primary" onclick="showAddEventForm()">
+            <i class="fas fa-calendar-plus"></i> Add Event
+        </button>
+    </div>
+</div>
+
+<div class="admin-alert success">
+    <div>
+        <i class="fas fa-info-circle"></i>
+        <span>Manage all events, registrations, and event details.</span>
+    </div>
+    <button class="btn btn-sm" onclick="refreshEvents()">
+        <i class="fas fa-sync-alt"></i>
+    </button>
+</div>
+
+<!-- Add Event Form (Initially Hidden) -->
+<div id="addEventForm" style="display: none; background: white; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
+    <h4 style="margin-bottom: 25px;">Add New Event</h4>
+    
+    <form id="eventForm">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div class="form-group">
+                <label>Event Title *</label>
+                <input type="text" name="title" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div class="form-group">
+                <label>Event Date *</label>
+                <input type="date" name="event_date" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div class="form-group">
+                <label>Event Time *</label>
+                <input type="time" name="event_time" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div class="form-group">
+                <label>Venue</label>
+                <input type="text" name="venue" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div class="form-group">
+                <label>Price ($)</label>
+                <input type="number" name="price" min="0" step="0.01" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div class="form-group">
+                <label>Max Participants</label>
+                <input type="number" name="max_participants" min="1" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="url" name="image_url" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+        </div>
+        
+        <div class="form-actions" style="display: flex; gap: 15px;">
+            <button type="submit" class="btn btn-primary">Save Event</button>
+            <button type="button" class="btn btn-outline" onclick="hideAddEventForm()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<!-- Events Table -->
+<div id="eventsTableContainer" style="background: white; border-radius: 8px; overflow: hidden;">
+    <div style="padding: 20px; text-align: center;">
+        <div class="loading-spinner" style="width: 40px; height: 40px; margin: 0 auto;"></div>
+        <p>Loading events...</p>
+    </div>
+</div>
+
+<script>
+    // Events management functionality
+    let eventsData = [];
+    
+    // Load events table
+    async function loadEventsTable() {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) return;
+            
+            const response = await fetch(`${API_BASE_URL}/events/manage-events.php`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            const data = await response.json();
+            const container = document.getElementById('eventsTableContainer');
+            
+            if (data.success && data.events) {
+                eventsData = data.events;
+                
+                container.innerHTML = `
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f8f9fa;">
+                                    <th style="padding: 15px; text-align: left;">ID</th>
+                                    <th style="padding: 15px; text-align: left;">Event Title</th>
+                                    <th style="padding: 15px; text-align: left;">Date & Time</th>
+                                    <th style="padding: 15px; text-align: left;">Venue</th>
+                                    <th style="padding: 15px; text-align: left;">Price</th>
+                                    <th style="padding: 15px; text-align: left;">Registrations</th>
+                                    <th style="padding: 15px; text-align: left;">Status</th>
+                                    <th style="padding: 15px; text-align: left;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.events.map(event => {
+                                    const eventDate = new Date(event.event_date + 'T' + event.event_time);
+                                    const isUpcoming = eventDate > new Date();
+                                    const formattedDate = formatDate(event.event_date);
+                                    const formattedTime = formatTime(event.event_time);
+                                    
+                                    return `
+                                        <tr style="border-bottom: 1px solid #dee2e6;">
+                                            <td style="padding: 15px;">${event.id}</td>
+                                            <td style="padding: 15px;">
+                                                <strong>${event.title}</strong>
+                                                ${event.description ? `<br><small style="color: #666;">${event.description.substring(0, 50)}${event.description.length > 50 ? '...' : ''}</small>` : ''}
+                                            </td>
+                                            <td style="padding: 15px;">
+                                                ${formattedDate}<br>
+                                                <small style="color: #666;">${formattedTime}</small>
+                                            </td>
+                                            <td style="padding: 15px;">${event.venue || '-'}</td>
+                                            <td style="padding: 15px;">${event.price > 0 ? '$' + event.price : 'Free'}</td>
+                                            <td style="padding: 15px;">
+                                                ${event.current_participants || 0} / ${event.max_participants || '∞'}
+                                                ${event.max_participants ? `<br><small style="color: #666;">${event.max_participants - (event.current_participants || 0)} spots left</small>` : ''}
+                                            </td>
+                                            <td style="padding: 15px;">
+                                                <span style="
+                                                    padding: 4px 12px;
+                                                    border-radius: 20px;
+                                                    font-size: 0.8rem;
+                                                    background: ${isUpcoming ? '#2ECC7120' : '#95A5A620'};
+                                                    color: ${isUpcoming ? '#2ECC71' : '#7F8C8D'};
+                                                    border: 1px solid ${isUpcoming ? '#2ECC71' : '#95A5A6'};
+                                                ">
+                                                    ${isUpcoming ? 'Upcoming' : 'Past'}
+                                                </span>
+                                            </td>
+                                            <td style="padding: 15px;">
+                                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                                    <button class="btn btn-sm" onclick="viewEvent(${event.id})" style="padding: 5px 10px; font-size: 0.8rem;">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm" onclick="editEvent(${event.id})" style="padding: 5px 10px; font-size: 0.8rem; background: #3498DB; color: white;">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm" onclick="viewRegistrations(${event.id})" style="padding: 5px 10px; font-size: 0.8rem; background: #9B59B6; color: white;">
+                                                        <i class="fas fa-users"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm" onclick="deleteEvent(${event.id})" style="padding: 5px 10px; font-size: 0.8rem; background: #E74C3C; color: white;">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    `;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="padding: 40px; text-align: center; color: #666;">
+                        <i class="fas fa-calendar" style="font-size: 48px; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <h3>No Events Found</h3>
+                        <p>No events have been created yet.</p>
+                        <button class="btn btn-primary" onclick="showAddEventForm()" style="margin-top: 15px;">
+                            <i class="fas fa-calendar-plus"></i> Create First Event
+                        </button>
+                    </div>
+                `;
+            }
+            
+        } catch (error) {
+            console.error('Error loading events table:', error);
+            document.getElementById('eventsTableContainer').innerHTML = `
+                <div style="padding: 40px; text-align: center; color: #E74C3C;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                    <h3>Error Loading Events</h3>
+                    <p>Failed to load events data. Please try again.</p>
+                    <button class="btn btn-outline" onclick="loadEventsTable()" style="margin-top: 15px;">
+                        <i class="fas fa-sync-alt"></i> Retry
+                    </button>
+                </div>
+            `;
+        }
+    }
+    
+    // Show add event form
+    function showAddEventForm() {
+        document.getElementById('addEventForm').style.display = 'block';
+    }
+    
+    // Hide add event form
+    function hideAddEventForm() {
+        document.getElementById('addEventForm').style.display = 'none';
+        document.getElementById('eventForm').reset();
+    }
+    
+    // Submit event form
+    document.getElementById('eventForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) throw new Error('Not authenticated');
+            
+            const response = await fetch(`${API_BASE_URL}/events/manage-events.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                showNotification('Event created successfully!', 'success');
+                hideAddEventForm();
+                loadEventsTable();
+            } else {
+                showNotification(result.message || 'Failed to create event', 'error');
+            }
+            
+        } catch (error) {
+            console.error('Error creating event:', error);
+            showNotification('Error creating event', 'error');
+        }
+    });
+    
+    // View event
+    function viewEvent(eventId) {
+        // Navigate to event details or show in modal
+        showNotification(`Viewing event #${eventId}`, 'info');
+    }
+    
+    // Edit event
+    function editEvent(eventId) {
+        // Show edit form with event data
+        showNotification(`Editing event #${eventId}`, 'info');
+    }
+    
+    // View registrations
+    function viewRegistrations(eventId) {
+        // Show registrations for this event
+        showNotification(`Viewing registrations for event #${eventId}`, 'info');
+    }
+    
+    // Delete event
+    function deleteEvent(eventId) {
+        if (!confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
+            return;
+        }
+        
+        showNotification(`Deleting event #${eventId}...`, 'info');
+        // In a real app, call delete API
+        setTimeout(() => {
+            showNotification(`Event #${eventId} deleted successfully`, 'success');
+            loadEventsTable();
+        }, 1500);
+    }
+    
+    // Export events
+    function exportEvents() {
+        showNotification('Exporting events data...', 'info');
+        // In a real app, generate CSV/Excel
+        setTimeout(() => {
+            showNotification('Events data exported successfully!', 'success');
+        }, 1500);
+    }
+    
+    // Refresh events
+    function refreshEvents() {
+        loadEventsTable();
+        showNotification('Events list refreshed');
+    }
+    
+    // Load events table when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        loadEventsTable();
+    });
+</script>

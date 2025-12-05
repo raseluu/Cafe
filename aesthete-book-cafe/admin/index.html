@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Aesthete Book Cafe</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --admin-sidebar: #2C3E50;
+            --admin-primary: #3498DB;
+            --admin-success: #2ECC71;
+            --admin-warning: #F39C12;
+            --admin-danger: #E74C3C;
+            --admin-light: #ECF0F1;
+            --admin-dark: #34495E;
+        }
+        
+        .admin-body {
+            display: flex;
+            min-height: 100vh;
+            background: var(--admin-light);
+        }
+        
+        .admin-sidebar {
+            width: 250px;
+            background: var(--admin-sidebar);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .admin-logo {
+            padding: 25px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .admin-logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: white;
+        }
+        
+        .admin-logo p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 5px 0 0 0;
+        }
+        
+        .admin-user {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .admin-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--admin-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .admin-user-info h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .admin-user-info p {
+            margin: 5px 0 0 0;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .admin-nav {
+            padding: 20px 0;
+        }
+        
+        .nav-section {
+            margin-bottom: 20px;
+        }
+        
+        .nav-section-title {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: var(--admin-primary);
+        }
+        
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border-left-color: var(--admin-primary);
+        }
+        
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .admin-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .admin-header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title h1 {
+            margin: 0;
+            color: var(--admin-dark);
+            font-size: 1.8rem;
+        }
+        
+        .header-title p {
+            margin: 5px 0 0 0;
+            color: #666;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .stat-icon.users { background: var(--admin-primary); }
+        .stat-icon.events { background: var(--admin-success); }
+        .stat-icon.books { background: var(--admin-warning); }
+        .stat-icon.messages { background: var(--admin-danger); }
+        
+        .stat-info h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--admin-dark);
+        }
+        
+        .stat-info p {
+            margin: 5px 0 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .recent-activity-card,
+        .quick-actions-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--admin-light);
+        }
+        
+        .card-header h3 {
+            margin: 0;
+            color: var(--admin-dark);
+        }
+        
+        .activity-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--admin-light);
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .activity-icon.user { background: var(--admin-primary); }
+        .activity-icon.event { background: var(--admin-success); }
+        .activity-icon.book { background: var(--admin-warning); }
+        .activity-icon.message { background: var(--admin-danger); }
+        
+        .activity-content h4 {
+            margin: 0 0 5px 0;
+            color: var(--admin-dark);
+        }
+        
+        .activity-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--admin-light);
+            border: none;
+            border-radius: 8px;
+            color: var(--admin-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: left;
+        }
+        
+        .action-btn:hover {
+            background: var(--admin-primary);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .action-btn i {
+            font-size: 20px;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--admin-dark);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .admin-alert {
+            background: #FFF3CD;
+            border-left: 4px solid #FFC107;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-alert.danger {
+            background: #F8D7DA;
+            border-left-color: #DC3545;
+        }
+        
+        .admin-alert.success {
+            background: #D4EDDA;
+            border-left-color: #28A745;
+        }
+        
+        @media (max-width: 1024px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .admin-sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .admin-content {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        /* Overlay for mobile sidebar */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .sidebar-overlay.open {
+            display: block;
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="admin-logo">
+            <h1>Aesthete Book Cafe</h1>
+            <p>Admin Dashboard</p>
+        </div>
+        
+        <div class="admin-user">
+            <div class="admin-avatar" id="adminAvatar">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="admin-user-info">
+                <h3 id="adminName">Loading...</h3>
+                <p id="adminRole">Administrator</p>
+            </div>
+        </div>
+        
+        <nav class="admin-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Main</div>
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Management</div>
+                <a href="#users" class="nav-item" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                    <span class="badge" id="usersBadge" style="margin-left: auto; background: var(--admin-primary); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">0</span>
+                </a>
+                <a href="#events" class="nav-item" data-section="events">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events</span>
+                    <span class="badge" id="eventsBadge" style="margin-left: auto; background: var(--admin-success); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">0</span>
+                </a>
+                <a href="#books" class="nav-item" data-section="books">
+                    <i class="fas fa-book"></i>
+                    <span>Books</span>
+                    <span class="badge" id="booksBadge" style="margin-left: auto; background: var(--admin-warning); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">0</span>
+                </a>
+                <a href="#messages" class="nav-item" data-section="messages">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                    <span class="badge" id="messagesBadge" style="margin-left: auto; background: var(--admin-danger); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">0</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">System</div>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#reports" class="nav-item" data-section="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="#backup" class="nav-item" data-section="backup">
+                    <i class="fas fa-database"></i>
+                    <span>Backup</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <a href="../index.html" class="nav-item">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>View Site</span>
+                </a>
+                <a href="#" class="nav-item" onclick="adminLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="admin-content">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-title">
+                <h1>Admin Dashboard</h1>
+                <p>Welcome back, <span id="adminGreeting">Admin</span>. Last login: <span id="lastLogin">Today</span></p>
+            </div>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <input type="text" placeholder="Search..." style="padding: 8px 15px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <button class="btn btn-primary" onclick="refreshDashboard()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+        </header>
+        
+        <!-- Dashboard Content -->
+        <div id="dashboardSection" class="content-section active">
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon users">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                        <small style="color: var(--admin-success);">
+                            <i class="fas fa-arrow-up"></i> <span id="newUsersToday">0</span> today
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon events">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalEvents">0</h3>
+                        <p>Total Events</p>
+                        <small style="color: var(--admin-success);">
+                            <i class="fas fa-calendar-plus"></i> <span id="upcomingEvents">0</span> upcoming
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon books">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalBooks">0</h3>
+                        <p>Total Books</p>
+                        <small style="color: var(--admin-warning);">
+                            <i class="fas fa-star"></i> <span id="featuredBooks">0</span> featured
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon messages">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="unreadMessages">0</h3>
+                        <p>Unread Messages</p>
+                        <small style="color: var(--admin-danger);">
+                            <i class="fas fa-clock"></i> <span id="pendingMessages">0</span> pending
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content Grid -->
+            <div class="admin-grid">
+                <!-- Recent Activity -->
+                <div class="recent-activity-card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                        <a href="#" class="btn btn-outline" style="padding: 5px 15px; font-size: 0.9rem;">View All</a>
+                    </div>
+                    
+                    <ul class="activity-list" id="recentActivity">
+                        <li class="activity-item">
+                            <div class="activity-icon user">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>New User Registration</h4>
+                                <p>John Doe registered for an account</p>
+                                <div class="activity-time">2 minutes ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon event">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Event Registration</h4>
+                                <p>Jane Smith registered for "Book Club Meeting"</p>
+                                <div class="activity-time">15 minutes ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon message">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>New Message</h4>
+                                <p>New contact form submission from Bob Johnson</p>
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon book">
+                                <i class="fas fa-book-medical"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>New Book Added</h4>
+                                <p>"The Midnight Library" added to collection</p>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions-card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <button class="action-btn" onclick="showAddEventModal()">
+                            <i class="fas fa-calendar-plus"></i>
+                            <div>
+                                <strong>Add New Event</strong>
+                                <small>Create a new event</small>
+                            </div>
+                        </button>
+                        
+                        <button class="action-btn" onclick="showAddBookModal()">
+                            <i class="fas fa-book-medical"></i>
+                            <div>
+                                <strong>Add New Book</strong>
+                                <small>Add book to collection</small>
+                            </div>
+                        </button>
+                        
+                        <button class="action-btn" onclick="navigateToSection('users')">
+                            <i class="fas fa-user-plus"></i>
+                            <div>
+                                <strong>Add New User</strong>
+                                <small>Create user account</small>
+                            </div>
+                        </button>
+                        
+                        <button class="action-btn" onclick="navigateToSection('messages')">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>View Messages</strong>
+                                <small>Check contact messages</small>
+                            </div>
+                        </button>
+                        
+                        <button class="action-btn" onclick="showReports()">
+                            <i class="fas fa-chart-bar"></i>
+                            <div>
+                                <strong>Generate Reports</strong>
+                                <small>View system reports</small>
+                            </div>
+                        </button>
+                        
+                        <a href="../index.html" class="action-btn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <div>
+                                <strong>Visit Site</strong>
+                                <small>View live website</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Users Section (Hidden by default) -->
+        <div id="usersSection" class="content-section" style="display: none;">
+            <div class="card-header">
+                <h3>User Management</h3>
+                <div>
+                    <button class="btn btn-outline" onclick="exportUsers()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                    <button class="btn btn-primary" onclick="showAddUserModal()">
+                        <i class="fas fa-user-plus"></i> Add User
+                    </button>
+                </div>
+            </div>
+            
+            <div class="admin-alert">
+                <div>
+                    <i class="fas fa-info-circle"></i>
+                    <span>Manage all user accounts, permissions, and activities.</span>
+                </div>
+                <button class="btn btn-sm" onclick="refreshUsers()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            
+            <div id="usersTableContainer" style="background: white; border-radius: 8px; overflow: hidden;">
+                <div style="padding: 20px; text-align: center;">
+                    <div class="loading-spinner" style="width: 40px; height: 40px; margin: 0 auto;"></div>
+                    <p>Loading users...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Events Section (Hidden by default) -->
+        <div id="eventsSection" class="content-section" style="display: none;">
+            <!-- Will be loaded from manage-events.html -->
+        </div>
+        
+        <!-- Books Section (Hidden by default) -->
+        <div id="booksSection" class="content-section" style="display: none;">
+            <!-- Will be loaded from manage-books.html -->
+        </div>
+        
+        <!-- Messages Section (Hidden by default) -->
+        <div id="messagesSection" class="content-section" style="display: none;">
+            <!-- Will be loaded from manage-messages.html -->
+        </div>
+        
+        <!-- Other sections will be loaded similarly -->
+        
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check admin authentication
+            if (!isLoggedIn()) {
+                showNotification('Please login to access admin panel', 'error');
+                setTimeout(() => {
+                    window.location.href = '../login.html';
+                }, 1500);
+                return;
+            }
+            
+            if (!isAdmin()) {
+                showNotification('Admin privileges required', 'error');
+                setTimeout(() => {
+                    window.location.href = '../dashboard.html';
+                }, 1500);
+                return;
+            }
+            
+            // Initialize admin dashboard
+            initializeAdminDashboard();
+        });
+    </script>
+</body>
+</html>

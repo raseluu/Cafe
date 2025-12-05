@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aesthete Book Cafe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(rgba(75, 58, 51, 0.9), rgba(126, 86, 52, 0.9));
+            color: white;
+        }
+        
+        .login-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .login-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .login-info {
+            padding: 40px;
+        }
+        
+        .login-info h2 {
+            color: var(--color-dark);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .login-info p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .benefits-list i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+        
+        .login-form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .login-form h2 {
+            color: var(--color-dark);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .login-form > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-dark);
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--color-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(156, 107, 70, 0.1);
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .remember-me input {
+            width: auto;
+        }
+        
+        .forgot-password {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--color-gray);
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 20px;
+            color: #666;
+            position: relative;
+        }
+        
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--color-gray);
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        
+        .google-btn { color: #DB4437; }
+        .facebook-btn { color: #4267B2; }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--color-gray);
+        }
+        
+        .register-link a {
+            color: var(--color-primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Forgot Password Modal */
+        .forgot-password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .forgot-password-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .login-info {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .login-form-container {
+                padding: 30px 20px;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Login Header -->
+    <div class="login-header">
+        <h1>Welcome Back</h1>
+        <p>Login to your Aesthete Book Cafe account</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="login-container">
+        <!-- Info Section -->
+        <div class="login-info">
+            <h2>Why Join Our Community?</h2>
+            <p>Become part of our literary community and unlock exclusive benefits for book lovers.</p>
+            
+            <ul class="benefits-list">
+                <li><i class="fas fa-check-circle"></i> Save your favorite books and create reading lists</li>
+                <li><i class="fas fa-check-circle"></i> Register for exclusive events and book clubs</li>
+                <li><i class="fas fa-check-circle"></i> Get personalized book recommendations</li>
+                <li><i class="fas fa-check-circle"></i> Earn points with every purchase</li>
+                <li><i class="fas fa-check-circle"></i> Access member-only discounts and promotions</li>
+                <li><i class="fas fa-check-circle"></i> Track your reading history and reviews</li>
+            </ul>
+            
+            <div style="margin-top: 40px;">
+                <h3>New to Aesthete Book Cafe?</h3>
+                <p>Create an account to start your literary journey with us.</p>
+                <a href="register.html" class="btn btn-primary" style="margin-top: 15px;">Create Account</a>
+            </div>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="login-form-container">
+            <form id="loginForm" class="login-form">
+                <h2>Login to Your Account</h2>
+                <p>Enter your credentials to access your account</p>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password" id="showForgotPassword">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary login-button">
+                    <span id="submitText">Login</span>
+                    <span id="loadingSpinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Logging in...
+                    </span>
+                </button>
+                
+                <div class="divider">
+                    <span>Or login with</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn google-btn" onclick="socialLogin('google')">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="social-btn facebook-btn" onclick="socialLogin('facebook')">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+                
+                <div class="register-link">
+                    Don't have an account? <a href="register.html">Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Forgot Password Modal -->
+    <div class="forgot-password-modal" id="forgotPasswordModal">
+        <div class="forgot-password-content">
+            <h3>Reset Your Password</h3>
+            <p>Enter your email address and we'll send you instructions to reset your password.</p>
+            
+            <form id="forgotPasswordForm" style="margin-top: 20px;">
+                <div class="form-group">
+                    <input type="email" id="forgotEmail" name="email" required placeholder="Enter your email address">
+                </div>
+                
+                <div style="display: flex; gap: 15px; margin-top: 25px;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        Send Reset Instructions
+                    </button>
+                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="hideForgotPassword()">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+            
+            <div id="resetSuccess" style="display: none; text-align: center; margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 8px;">
+                <i class="fas fa-check-circle" style="color: #155724; margin-right: 10px;"></i>
+                <span>Password reset instructions have been sent to your email.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    
+<!-- Update the form submission script in login.html -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('header-container', 'components/header.html');
+        loadComponent('footer-container', 'components/footer.html');
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Use admin-login.php for admin, login.php for regular users
+            const isAdminEmail = email === 'admin@aesthetebookcafe.com';
+            const apiUrl = isAdminEmail ? 
+                'api/auth/admin-login.php' : 
+                'api/auth/login.php';
+            
+            loginUser(apiUrl, email, password);
+        });
+    });
+    
+    async function loginUser(apiUrl, email, password) {
+        const submitBtn = document.querySelector('#loginForm button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+        submitBtn.disabled = true;
+        
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Save user data to localStorage
+                localStorage.setItem('token', data.token || 'admin-token');
+                localStorage.setItem('userId', data.user?.id || '1');
+                localStorage.setItem('username', data.user?.username || 'admin');
+                localStorage.setItem('email', data.user?.email || email);
+                localStorage.setItem('isAdmin', data.user?.is_admin || 'true');
+                
+                showNotification('Login successful!');
+                
+                // Redirect based on user type
+                setTimeout(() => {
+                    if (data.user?.is_admin || email === 'admin@aesthetebookcafe.com') {
+                        window.location.href = 'admin/index.html';
+                    } else {
+                        window.location.href = 'dashboard.html';
+                    }
+                }, 1000);
+            } else {
+                showNotification(data.message || 'Login failed', 'error');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification('An error occurred. Please try again.', 'error');
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+</script>
+
+
